@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import SuperheroCard from './superheroCard.jsx';
+import jsonHeroes from './superheroesInfo.jsx';
 
 function App() {
+  const objSuperheros = JSON.parse(jsonHeroes);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Супергерои</h1>
+      <main className="container">
+        {objSuperheros.map((hero) =>
+          <SuperheroCard name={hero.name} universe={hero.universe}
+            alterego={hero.alterego} occupation={hero.occupation} friends={hero.friends}
+            superpowers={hero.superpowers} info={hero.info} url={hero.url}></SuperheroCard>
+        )
+
+        }
+      </main >
+
+    </>
   );
 }
 
